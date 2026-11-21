@@ -1,0 +1,49 @@
+services:
+  servidor1:
+    image: ubuntu-ssh:latest
+    build: .
+    container_name: servidor1
+    hostname: servidor1
+    ports: ["2221:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.20.0.11
+  servidor2:
+    image: ubuntu-ssh:latest
+    container_name: servidor2
+    hostname: servidor2
+    ports: ["2222:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.20.0.12
+  servidor3:
+    image: ubuntu-ssh:latest
+    container_name: servidor3
+    hostname: servidor3
+    ports: ["2223:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.20.0.13
+  servidor4:
+    image: ubuntu-ssh:latest
+    container_name: servidor4
+    hostname: servidor4
+    ports: ["2224:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.20.0.14
+  servidor5:
+    image: ubuntu-ssh:latest
+    container_name: servidor5
+    hostname: servidor5
+    ports: ["2225:22"]
+    networks:
+      red_ansible:
+        ipv4_address: 172.20.0.15
+
+networks:
+  red_ansible:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
